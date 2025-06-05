@@ -10,3 +10,8 @@ output "database_subnets" {
 output "tgw_id" {
   value = aws_ec2_transit_gateway.main.id
 }
+
+output "rds_endpoint" {
+  description = "Endpoint of the shared RDS instance"
+  value       = aws_db_instance.main.endpoint
+}

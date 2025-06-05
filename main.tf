@@ -8,6 +8,7 @@ module "shared" {
   shared_vpc_cidr            = var.shared_vpc_cidr
   private_subnet_cidrs       = var.private_subnet_cidrs
   database_subnet_cidrs      = var.database_subnet_cidrs
+  tenant_sg                  = [module.tenant.web_sg_id] # for next tenant, add coma separated values
 }
 
 module "tenant" {
@@ -24,4 +25,5 @@ module "tenant" {
   private_subnet_cidrs       = ["10.1.11.0/24", "10.1.12.0/24"]
   tgw_id                     = module.shared.tgw_id
   shared_vpc_cidr            = var.shared_vpc_cidr
+  rds_endpoint               = module.shared.rds_endpoint
 }

@@ -49,3 +49,8 @@ variable "database_subnet_cidrs" {
   type        = list(string)
   default     = ["10.0.21.0/24", "10.0.22.0/24"]
 }
+
+variable "tenant_sg" {
+  description = "List of tenant security groups to allow db traffic"
+  type = list(string)
+}

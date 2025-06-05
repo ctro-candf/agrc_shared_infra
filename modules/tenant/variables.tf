@@ -67,3 +67,8 @@ variable "shared_vpc_cidr" {
   description = "CIDR block for the shared VPC"
   type        = string
 }
+
+variable "rds_endpoint" {
+  description = "Endpoint for RDS"
+  type = string
+}
