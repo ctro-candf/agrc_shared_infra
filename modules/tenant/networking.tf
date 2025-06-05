@@ -79,4 +79,3 @@ resource "aws_nat_gateway" "main" {
   
   depends_on = [aws_internet_gateway.main]
 }
-

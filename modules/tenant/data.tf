@@ -13,3 +13,7 @@ data "aws_ami" "windows_server" {
     values = ["hvm"]
   }
 }
+
+data "aws_availability_zones" "available" {
+  state = "available"
+}

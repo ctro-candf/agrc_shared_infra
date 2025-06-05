@@ -5,19 +5,13 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tenant" {
   subnet_ids         = aws_subnet.private[*].id
 }
 
-# Shared route table
-resource "aws_route_table" "to_shared" {
-  vpc_id = aws_vpc.tenant.id
+# Route to shared
 
-  tags = {
-    Name        = "${var.project_name}-${var.tenant_name}-database-rt"
-    Environment = var.environment
-  }
-}
+resource "aws_route" "to_shared" {
+  count = length(var.private_subnet_cidrs)
 
-resource "aws_route" "shared_route" {
-  route_table_id         = aws_route_table.to_shared.id
-  destination_cidr_block = "10.0.0.0/16"
+  route_table_id         = aws_route_table.private[count.index].id
+  destination_cidr_block = var.shared_vpc_cidr
   transit_gateway_id     = var.tgw_id
 }
 
