@@ -12,9 +12,9 @@ resource "aws_db_instance" "main" {
   skip_final_snapshot    = true
   license_model          = "license-included"
 
-  lifecycle {
-    prevent_destroy = true
-  }
+  # lifecycle {
+  #   prevent_destroy = true
+  # }
 }
 
 resource "aws_db_subnet_group" "main" {
