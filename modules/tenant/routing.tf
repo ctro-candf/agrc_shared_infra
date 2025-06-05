@@ -2,7 +2,7 @@
 resource "aws_ec2_transit_gateway_vpc_attachment" "tenant" {
   transit_gateway_id = var.tgw_id
   vpc_id             = aws_vpc.tenant.id
-  subnet_ids         = aws_subnet.tenant[*].id
+  subnet_ids         = aws_subnet.private[*].id
 }
 
 # Shared route table
