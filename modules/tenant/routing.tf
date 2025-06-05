@@ -23,7 +23,7 @@ resource "aws_route" "shared_route" {
 
 # Public Route Table
 resource "aws_route_table" "public" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.tenant.id
   
   route {
     cidr_block = "0.0.0.0/0"
@@ -40,7 +40,7 @@ resource "aws_route_table" "public" {
 resource "aws_route_table" "private" {
   count = length(var.private_subnet_cidrs)
   
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.tenant.id
   
   route {
     cidr_block     = "0.0.0.0/0"

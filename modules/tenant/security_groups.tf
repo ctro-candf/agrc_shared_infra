@@ -1,7 +1,7 @@
 resource "aws_security_group" "web" {
   name        = "${var.project_name}-${var.tenant_name}-web-sg"
   description = "Allow tenant EC2 to access RDS in shared VPC"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = aws_vpc.tenant.id
 
   egress {
     from_port   = 0
