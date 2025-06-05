@@ -8,7 +8,7 @@ module "shared" {
   shared_vpc_cidr            = var.shared_vpc_cidr
   private_subnet_cidrs       = var.private_subnet_cidrs
   database_subnet_cidrs      = var.database_subnet_cidrs
-  tenant_sg                  = [module.tenant.web_sg_id] # for next tenant, add coma separated values
+  tenant_vpc_cidrs           = ["10.1.0.0/16"] # for next tenant, add coma separated values
 }
 
 module "tenant" {

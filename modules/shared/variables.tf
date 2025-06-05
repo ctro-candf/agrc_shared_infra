@@ -50,7 +50,7 @@ variable "database_subnet_cidrs" {
   default     = ["10.0.21.0/24", "10.0.22.0/24"]
 }
 
-variable "tenant_sg" {
-  description = "List of tenant security groups to allow db traffic"
+variable "tenant_vpc_cidrs" {
+  description = "List of tenant VPC CIDR to allow db traffic"
   type = list(string)
 }

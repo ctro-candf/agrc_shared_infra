@@ -1,14 +1,17 @@
 resource "aws_security_group" "database" {
   name        = "${var.project_name}-database-sg"
-  description = "Security group for RDS access"
+  description = "Allow access to RDS from tenant VPCs"
   vpc_id      = aws_vpc.main.id
 
-  ingress {
-    description     = "Allow SQL Server from tenant EC2"
-    from_port       = 1433
-    to_port         = 1433
-    protocol        = "tcp"
-    security_groups = var.tenant_sg
+  dynamic "ingress" {
+    for_each = var.tenant_vpc_cidrs
+    content {
+      description     = "Allow SQL Server from tenant"
+      from_port       = 1433
+      to_port         = 1433
+      protocol        = "tcp"
+      cidr_blocks     = [ingress.value]
+    }
   }
 
   tags = {
