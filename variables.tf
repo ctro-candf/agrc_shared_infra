@@ -14,3 +14,4 @@ variable "tenant_name" {}
 variable "instance_type" {}
 
 variable "aws_region" {}
+variable "aws_iam_role" {}
