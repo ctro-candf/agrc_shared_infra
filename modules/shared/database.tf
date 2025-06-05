@@ -1,7 +1,7 @@
 resource "aws_db_instance" "main" {
   identifier             = "multitenant-rds"
   engine                 = "sqlserver-se"
-  instance_class         = "db.t3.medium"
+  instance_class         = "db.m5.large"
   allocated_storage      = 100
   username               = var.db_username
   password               = var.db_password
